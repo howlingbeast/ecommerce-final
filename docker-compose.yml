@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ecommerce-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+      MYSQL_DATABASE: ${DB_NAME:-ecommerce_db}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+    command:
+      - --character-set-server=gb2312
+      - --collation-server=gb2312_chinese_ci
+      - --innodb_buffer_pool_size=64M
+      - --innodb_log_buffer_size=4M
+      - --max_connections=50
+      - --skip-name-resolve
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p\"${MYSQL_ROOT_PASSWORD}\" --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 30s
+
+  backend:
+    build: ./backend
+    container_name: ecommerce-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: ${DB_PASSWORD:-root}
+      DB_NAME: ${DB_NAME:-ecommerce_db}
+      DATABASE_URL: mysql+aiomysql://root:${DB_PASSWORD:-root}@mysql:3306/${DB_NAME:-ecommerce_db}
+      SECRET_KEY: ${SECRET_KEY}
+      ALGORITHM: ${ALGORITHM:-HS256}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-30}
+      ALIPAY_APP_ID: ${ALIPAY_APP_ID}
+      ALIPAY_PRIVATE_KEY_PATH: ${ALIPAY_PRIVATE_KEY_PATH:-private_key.pem}
+      ALIPAY_PUBLIC_KEY_PATH: ${ALIPAY_PUBLIC_KEY_PATH:-public_key.pem}
+      ALIPAY_GATEWAY: ${ALIPAY_GATEWAY}
+      ALIPAY_NOTIFY_URL: ${ALIPAY_NOTIFY_URL}
+      ALIPAY_RETURN_URL: ${ALIPAY_RETURN_URL}
+      VERIFY_SIGN: ${VERIFY_SIGN:-False}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./backend/private_key.pem:/app/private_key.pem:ro
+      - ./backend/public_key.pem:/app/public_key.pem:ro
+      - backend_init_flag:/app/.init_done
+
+  frontend:
+    build: ./frontend
+    container_name: ecommerce-frontend
+    restart: unless-stopped
+    ports:
+      - "80"
+    depends_on:
+      - backend
+  
+  gateway:
+    build: ./gateway
+    container_name: ecommerce-gateway
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    depends_on:
+      - backend
+      - frontend
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ecommerce-ngrok
+    restart: unless-stopped
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
+    command: http gateway:80 --authtoken=${NGROK_AUTHTOKEN} --log=stdout
+    depends_on:
+      - gateway
+
+volumes:
+  mysql_data:
+  backend_init_flag:

@@ -1,0 +1,226 @@
+# Byte-compiled / optimized / DLL files (Python)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging (Python)
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports (Python)
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff (if any)
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff (if any)
+instance/
+.webassets-cache
+
+# Scrapy stuff (if any)
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments (Python)
+.env
+.env.local
+.env.*.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE settings
+.vscode/
+.idea/
+*.sublime-*
+.project
+.pydevproject
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# FastAPI / Uvicorn specific (Python)
+uvicorn.pid
+gunicorn.pid
+
+# Docker (optional, usually .dockerignore is used)
+.dockerignore
+
+# Alembic (if using database migrations)
+alembic/versions/*.pyc
+
+# Sentry
+.sentry-native
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# ======================
+# Frontend (Node / React / TypeScript)
+# ======================
+
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+out/
+
+# Vite / Webpack cache
+.vite/
+.cache/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Environment variables (frontend)
+.env
+.env.local
+.env.production
+.env.development
+
+# NPM / Yarn / PNPM logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files (already covered but keep for frontend)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Optional: ignore lock files if you want to regenerate (usually keep)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Ignore all common zip file formats
+*.zip
+*.tar
+*.rar
+*.7z
+*.gz
