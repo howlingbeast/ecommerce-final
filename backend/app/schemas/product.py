@@ -10,7 +10,7 @@ class ProductBase(BaseModel):
     description: Optional[str] = Field(None, max_length=2000, description="商品描述")
     price: float = Field(..., gt=0, description="商品价格")
     stock: int = Field(0, ge=0, description="库存数量")
-    image_url: Optional[str] = Field(None, max_length=500, description="商品图片URL")
+    image_url: Optional[str] = Field(None, max_length=2000, description="商品图片URL")
     category: Optional[str] = Field(None, max_length=100, description="商品分类")
     is_active: bool = Field(True, description="是否上架")
 
@@ -47,7 +47,7 @@ class ProductUpdate(BaseModel):
     description: Optional[str] = Field(None, max_length=2000)
     price: Optional[float] = Field(None, gt=0)
     stock: Optional[int] = Field(None, ge=0)
-    image_url: Optional[str] = Field(None, max_length=500)
+    image_url: Optional[str] = Field(None, max_length=2000)
     category: Optional[str] = Field(None, max_length=100)
     is_active: Optional[bool] = None
 

@@ -12,8 +12,8 @@ const Footer = () => {
           <div className="col-md-4">
             <h5>帮助中心</h5>
             <ul className="list-unstyled">
-              <li><a href="#" className="text-light">售后服务</a></li>
-              <li><a href="#" className="text-light">配送说明</a></li>
+              <li><a href="#">售后服务</a></li>
+              <li><a href="#">配送说明</a></li>
             </ul>
           </div>
           <div className="col-md-4">

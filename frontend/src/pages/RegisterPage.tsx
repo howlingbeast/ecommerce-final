@@ -49,7 +49,7 @@ const RegisterPage = () => {
   return (
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
-        <h2 className="text-center mb-4 fw-bold">创建账号</h2>
+        <h2 className={styles.authTitle}>注册</h2>
         {error && <div className="alert alert-danger">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

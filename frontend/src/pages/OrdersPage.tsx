@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { useOrderStore } from "../store/orderStore";
 import { useNavigate } from "react-router-dom";
 import { paymentApi } from '../api/payment';
+import { logisticsApi } from '../api/logistics';
+import LogisticsModal from '../components/LogisticsModal';
 import type { Order } from '../types/order';          // 导入 Order 类型
 import styles from "./OrdersPage.module.css";
+import ordersBg from '../assets/orders-bg.png';
 
 const DEFAULT_IMAGE = "https://via.placeholder.com/60?text=No+Image";
 
@@ -12,10 +15,17 @@ const OrdersPage = () => {
   const navigate = useNavigate();
   const { orders, total, isLoading, fetchOrders, cancelOrder } = useOrderStore();
   const [expandedOrderId, setExpandedOrderId] = useState<number | null>(null);
+  const [logisticsOrderId, setLogisticsOrderId] = useState<number | null>(null);
+  const [showLogistics, setShowLogistics] = useState(false);
 
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  const handleViewLogistics = (orderId: number) => {
+    setLogisticsOrderId(orderId);
+    setShowLogistics(true);
+  };
 
   const handleCancel = async (orderId: number) => {
     if (!window.confirm("确定要取消该订单吗？")) return;
@@ -92,7 +102,10 @@ const OrdersPage = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
+      <img src={ordersBg} alt="" className={styles.bgImage} />
+      <div className={styles.bgOverlay}></div>
+      <div className={styles.container}>
       <h3 className="fw-bold mb-4">我的订单</h3>
       <div className={styles.orderList}>
         {orders.map((order) => (
@@ -119,6 +132,16 @@ const OrdersPage = () => {
                       onClick={() => handleGoPay(order)}   // 修改为调用 handleGoPay
                     >
                       去支付
+                    </button>
+                  </div>
+                )}
+                {(order.status === "shipped" || order.status === "completed") && (
+                  <div className={styles.orderActions}>
+                    <button
+                      className="btn btn-sm btn-outline-info"
+                      onClick={() => handleViewLogistics(order.id)}
+                    >
+                      查看物流
                     </button>
                   </div>
                 )}
@@ -159,7 +182,7 @@ const OrdersPage = () => {
               <div className={styles.orderDetail}>
                 <div className="table-responsive">
                   <table className="table table-sm align-middle">
-                    <thead className="table-light">
+                    <thead className="table-dark">
                       <tr>
                         <th>商品</th>
                         <th>单价</th>
@@ -193,6 +216,12 @@ const OrdersPage = () => {
           </div>
         ))}
       </div>
+      <LogisticsModal
+        visible={showLogistics}
+        orderId={logisticsOrderId}
+        onClose={() => setShowLogistics(false)}
+      />
+    </div>
     </div>
   );
 };

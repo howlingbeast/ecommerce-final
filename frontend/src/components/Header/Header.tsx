@@ -21,41 +21,44 @@ const Header = () => {
       <header className={`${styles.header} py-2`}>
         <div className="container d-flex justify-content-between align-items-center">
           <Link to="/" className={styles.logo}>
-            <img src="/react.svg" alt="Logo" height="40" />
-            <span className="ms-2 fw-bold">EasyShop</span>
+            <span className={styles.logoIcon}>🔮</span>
+            <span>NEXUS</span>
           </Link>
-          <div className="d-flex align-items-center gap-3">
+          <div className="d-flex align-items-center gap-2">
             {/* 购物车图标 */}
-            <button className="btn btn-outline-light btn-sm position-relative" onClick={handleCartClick}>
-              <i className="bi bi-cart"></i>
-              购物车
+            <button className="btn btn-light btn-sm position-relative" onClick={handleCartClick}>
+              <i className="bi bi-cart"></i> 购物车
               {totalQuantity > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {totalQuantity}
                 </span>
               )}
             </button>
-            <Link to="/orders" className="btn btn-outline-light btn-sm">
-            我的订单
+            {/* 收藏夹图标 */}
+            <Link to="/account" className="btn btn-light btn-sm position-relative" title="我的收藏">
+              <i className="bi bi-heart"></i> 收藏
+            </Link>
+            <Link to="/orders" className="btn btn-light btn-sm">
+              我的订单
             </Link>
             {user ? (
               <>
-                <span className="text-light">
-                  欢迎，{user.full_name || user.username}
+                <span className="text-muted" style={{fontSize:'0.85rem'}}>
+                  {user.full_name || user.username}
                   {user.is_superuser && (
-                      <Link to="/admin" className="badge bg-warning text-dark ms-2 text-decoration-none">
-                      管理员
+                      <Link to="/admin" className="badge bg-primary ms-2 text-decoration-none">
+                      管理
                       </Link>
                   )}
                 </span>
-                <button className="btn btn-outline-light btn-sm" onClick={logout}>
+                <button className="btn btn-light btn-sm" onClick={logout}>
                   退出
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="btn btn-outline-light btn-sm">登录</Link>
-                <Link to="/register" className="btn btn-light btn-sm">注册</Link>
+                <Link to="/login" className="btn btn-light btn-sm">登录</Link>
+                <Link to="/register" className="btn btn-primary btn-sm">注册</Link>
               </>
             )}
           </div>

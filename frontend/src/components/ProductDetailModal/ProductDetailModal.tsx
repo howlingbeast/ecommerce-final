@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { productPublicApi } from '../../api/productPublic';
+import { favoritesApi } from '../../api/favorites';
+import { useAuthStore } from '../../store/authStore';
+import ReviewsSection from '../ReviewsSection';
 import type { Product } from '../../types/product';
 import styles from './ProductDetailModal.module.css';
 
@@ -13,6 +16,9 @@ const ProductDetailModal = ({ visible, productId, onClose }: ProductDetailModalP
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [favLoading, setFavLoading] = useState(false);
+  const { token } = useAuthStore();
 
   useEffect(() => {
     if (visible && productId) {
@@ -34,8 +40,42 @@ const ProductDetailModal = ({ visible, productId, onClose }: ProductDetailModalP
       // 重置状态
       setProduct(null);
       setError(null);
+      setIsFavorited(false);
     }
   }, [visible, productId]);
+
+  // 检查是否已收藏
+  useEffect(() => {
+    if (visible && productId && token) {
+      const checkFavorite = async () => {
+        try {
+          const result = await favoritesApi.check(productId);
+          setIsFavorited(result.is_favorited);
+        } catch (err) {
+          console.error('检查收藏状态失败:', err);
+        }
+      };
+      checkFavorite();
+    }
+  }, [visible, productId, token]);
+
+  const handleToggleFavorite = async () => {
+    if (!productId || !token) return;
+    setFavLoading(true);
+    try {
+      if (isFavorited) {
+        await favoritesApi.remove(productId);
+        setIsFavorited(false);
+      } else {
+        await favoritesApi.add(productId);
+        setIsFavorited(true);
+      }
+    } catch (err) {
+      console.error('操作收藏失败:', err);
+    } finally {
+      setFavLoading(false);
+    }
+  };
 
   if (!visible) return null;
 
@@ -60,7 +100,20 @@ const ProductDetailModal = ({ visible, productId, onClose }: ProductDetailModalP
                 alt={product.name}
                 className={styles.detailImage}
               />
-              <h3 className={styles.productName}>{product.name}</h3>
+              <div className="d-flex align-items-center justify-content-between">
+                <h3 className={styles.productName}>{product.name}</h3>
+                {token && (
+                  <button
+                    className={`btn btn-sm ${isFavorited ? 'btn-danger' : 'btn-outline-danger'}`}
+                    onClick={handleToggleFavorite}
+                    disabled={favLoading}
+                    title={isFavorited ? '取消收藏' : '加入收藏'}
+                  >
+                    <i className={`bi ${isFavorited ? 'bi-heart-fill' : 'bi-heart'}`}></i>
+                    {isFavorited ? ' 已收藏' : ' 收藏'}
+                  </button>
+                )}
+              </div>
               <p className={styles.productDesc}>{product.description || '暂无描述'}</p>
               <div className={styles.infoRow}>
                 <span className={styles.label}>价格：</span>
@@ -80,6 +133,8 @@ const ProductDetailModal = ({ visible, productId, onClose }: ProductDetailModalP
                   {product.is_active ? '上架' : '下架'}
                 </span>
               </div> */}
+              <hr />
+              <ReviewsSection productId={product.id} />
             </div>
           )}
         </div>

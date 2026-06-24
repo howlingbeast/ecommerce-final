@@ -20,7 +20,7 @@ SAMPLE_PRODUCTS = [
         "description": "苹果最新旗舰手机，A17 Pro芯片，钛金属设计",
         "price": 9999.00,
         "stock": 50,
-        "image_url": "https://picsum.photos/400/300?random=1",
+        "image_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGNUY1RjciLz48dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxRDFEMUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkbU8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIxODAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNkU2RTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7miYvmnI3mlbTnoIE8L3RleHQ+PC9zdmc+",
         "category": "手机数码",
         "is_active": True
     },
@@ -29,7 +29,7 @@ SAMPLE_PRODUCTS = [
         "description": "M3 Pro芯片，14英寸Liquid Retina XDR显示屏",
         "price": 14999.00,
         "stock": 30,
-        "image_url": "https://picsum.photos/400/300?random=2",
+        "image_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGNUY1RjciLz48dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxRDFEMUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkrs8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIxODAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNkU2RTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7nlLvnrqHlip/lhazvvIjlt7Tnu4PvvIk8L3RleHQ+PC9zdmc+",
         "category": "电脑办公",
         "is_active": True
     },
@@ -38,7 +38,7 @@ SAMPLE_PRODUCTS = [
         "description": "主动降噪无线耳机，自适应音频",
         "price": 1899.00,
         "stock": 100,
-        "image_url": "https://picsum.photos/400/300?random=3",
+        "image_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGNUY1RjciLz48dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxRDFEMUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfj6c8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIxODAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNkU2RTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lv67pn7PlkqzoiJ08L3RleHQ+PC9zdmc+",
         "category": "影音娱乐",
         "is_active": True
     },
@@ -47,7 +47,7 @@ SAMPLE_PRODUCTS = [
         "description": "1.74英寸AMOLED大屏，独立GPS",
         "price": 399.00,
         "stock": 200,
-        "image_url": "https://picsum.photos/400/300?random=4",
+        "image_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGNUY1RjciLz48dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxRDFEMUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfirQ8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIxODAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNkU2RTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7mmZrlhpnnq5LluqY8L3RleHQ+PC9zdmc+",
         "category": "智能穿戴",
         "is_active": True
     },
@@ -56,7 +56,7 @@ SAMPLE_PRODUCTS = [
         "description": "顶级降噪耳机，30小时续航",
         "price": 2499.00,
         "stock": 45,
-        "image_url": "https://picsum.photos/400/300?random=5",
+        "image_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGNUY1RjciLz48dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxRDFEMUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCf6Yc8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIxODAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNkU2RTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lv67pn7PlkqzoiJ08L3RleHQ+PC9zdmc+",
         "category": "影音娱乐",
         "is_active": True
     },
@@ -65,7 +65,7 @@ SAMPLE_PRODUCTS = [
         "description": "7英寸OLED屏幕，续航增强版",
         "price": 2599.00,
         "stock": 25,
-        "image_url": "https://picsum.photos/400/300?random=6",
+        "image_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGNUY1RjciLz48dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxRDFEMUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjq48L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIxODAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNkU2RTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7muLjmiI/lk63niZvvvIhPTERE77yJPC90ZXh0Pjwvc3ZnPg==",
         "category": "游戏娱乐",
         "is_active": True
     },
@@ -74,7 +74,7 @@ SAMPLE_PRODUCTS = [
         "description": "3.5K OLED触控屏，i9处理器",
         "price": 18999.00,
         "stock": 15,
-        "image_url": "https://picsum.photos/400/300?random=7",
+        "image_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGNUY1RjciLz48dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjAiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMxRDFEMUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkrs8L3RleHQ+PHRleHQgeD0iMjAwIiB5PSIxODAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNkU2RTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7nlLvnrqHlip/lhazvvIjlt7Tnu4PvvIk8L3RleHQ+PC9zdmc+",
         "category": "电脑办公",
         "is_active": True
     }

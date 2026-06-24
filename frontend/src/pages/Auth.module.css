@@ -1,17 +1,50 @@
 .authContainer {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #ff4757 0%, #2f3542 100%);
-    padding: 2rem;
-  }
-  
-  .authCard {
-    background: white;
-    border-radius: 1rem;
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--jjk-bg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.authContainer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -30%;
+  width: 80%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(107, 212, 255, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+.authContainer::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 60%;
+  height: 150%;
+  background: radial-gradient(ellipse, rgba(167, 139, 250, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.authCard {
+  background: var(--jjk-card);
+  border-radius: 16px;
+  border: 1px solid var(--jjk-border);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  position: relative;
+  backdrop-filter: blur(20px);
+}
+
+.authTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--jjk-text);
+}

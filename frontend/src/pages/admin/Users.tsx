@@ -143,7 +143,7 @@ const Users = () => {
         <>
           <div className="table-responsive">
             <table className="table table-bordered table-hover align-middle">
-              <thead className="table-light">
+              <thead className="table-dark">
                 <tr>
                   <th>ID</th>
                   <th>用户名</th>

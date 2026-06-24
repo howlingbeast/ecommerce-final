@@ -1,3 +1,28 @@
 .dashboard h3 {
-    color: #2f3542;
-  }
+  color: var(--jjk-text);
+}
+
+/* Stat cards - fix Bootstrap bg colors for dark theme */
+.dashboard :global(.card) {
+  border: 1px solid var(--jjk-border) !important;
+}
+
+.dashboard :global(.bg-primary) {
+  background: linear-gradient(135deg, #6BD4FF, #4CA8E8) !important;
+  color: #0A0E1A !important;
+}
+
+.dashboard :global(.bg-success) {
+  background: linear-gradient(135deg, #6EE7B7, #34D399) !important;
+  color: #0A0E1A !important;
+}
+
+.dashboard :global(.bg-warning) {
+  background: linear-gradient(135deg, #FFD93D, #FFB800) !important;
+  color: #0A0E1A !important;
+}
+
+.dashboard :global(.bg-info) {
+  background: linear-gradient(135deg, #A78BFA, #7C3AED) !important;
+  color: white !important;
+}

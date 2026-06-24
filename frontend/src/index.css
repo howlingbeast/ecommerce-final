@@ -1,66 +1,346 @@
-/* src/index.css */
+/* ====================================================
+   ✨ NEXUS · 咒术回战 五条悟 主题 LIGHT v2
+   ==================================================== */
+
+:root {
+  --jjk-bg: #F8FAFC;
+  --jjk-surface: rgba(255, 255, 255, 0.95);
+  --jjk-card: rgba(255, 255, 255, 0.92);
+  --jjk-blue: #3B82F6;
+  --jjk-blue-bright: #60A5FA;
+  --jjk-purple: #8B5CF6;
+  --jjk-pink: #EC4899;
+  --jjk-darkblue: #1E3A5F;
+  --jjk-glow: rgba(59, 130, 246, 0.1);
+  --jjk-glow-strong: rgba(59, 130, 246, 0.2);
+  --jjk-text: #0F172A;
+  --jjk-text-dim: #1E293B;
+  --jjk-text-muted: #475569;
+  --jjk-border: rgba(148, 163, 184, 0.25);
+  --jjk-border-active: rgba(59, 130, 246, 0.4);
+  --jjk-radius: 12px;
+  --jjk-radius-pill: 22px;
+  --jjk-font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
 body {
-  background: #f0f2f5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--jjk-font) !important;
+  background: var(--jjk-bg) !important;
+  color: var(--jjk-text) !important;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  font-weight: 450;
+  letter-spacing: 0.02em;
 }
 
-/* 顶部导航自定义 */
-.navbar-brand {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #0d6efd;
+/* 浅色渐变装饰 — 柔和光晕 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 700px 500px at 20% 30%, rgba(59, 130, 246, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 600px at 80% 70%, rgba(139, 92, 246, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 50% 100%, rgba(59, 130, 246, 0.02) 0%, transparent 60%);
 }
 
-/* 轮播广告 */
-.carousel-item img {
-  height: 400px;
-  object-fit: cover;
+body::after {
+  display: none;
 }
 
-/* 分类图标 */
-.category-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+/* === 滚动条 === */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #E2E8F0; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--jjk-blue), var(--jjk-purple));
+  border-radius: 3px;
 }
 
-/* 商品卡片 */
-.product-card {
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: none;
+/* ==== 按钮 ===== */
+.btn {
+  border-radius: var(--jjk-radius-pill) !important;
+  font-weight: 600 !important;
+  font-family: var(--jjk-font) !important;
+  font-size: 0.85rem !important;
+  padding: 8px 22px !important;
+  transition: all 0.25s ease !important;
+  border: 1px solid transparent !important;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
 }
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-.product-card .card-img-top {
-  height: 200px;
-  object-fit: contain;
-  padding: 1rem;
-  background: #fafafa;
-}
+.btn:hover { transform: translateY(-2px); }
 
-/* 登录/注册卡片 */
-.auth-card {
-  border: none;
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  background: #fff;
+/* 主按钮 */
+.btn-danger, .btn-primary {
+  background: linear-gradient(135deg, #3B82F6, #2563EB) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.15) !important;
 }
-
-/* 登录/注册页面背景 */
-.auth-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.btn-danger:hover, .btn-primary:hover {
+  box-shadow: 0 4px 25px rgba(59, 130, 246, 0.3) !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
 }
 
-/* 页脚 */
-.footer {
-  background: #2c3e50;
-  color: #ecf0f1;
+/* 次要描边按钮 */
+.btn-outline-danger {
+  background: transparent !important;
+  color: var(--jjk-blue) !important;
+  border-color: rgba(59, 130, 246, 0.25) !important;
+}
+.btn-outline-danger:hover {
+  background: rgba(59, 130, 246, 0.06) !important;
+  border-color: var(--jjk-blue) !important;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.1) !important;
 }
 
+.btn-outline-secondary {
+  background: transparent !important;
+  color: var(--jjk-text-dim) !important;
+  border-color: var(--jjk-border) !important;
+}
+.btn-outline-secondary:hover {
+  border-color: var(--jjk-purple) !important;
+  color: var(--jjk-purple) !important;
+  background: rgba(139, 92, 246, 0.06) !important;
+}
 
+/* 亮色按钮 */
+.btn-light {
+  background: #FFFFFF !important;
+  color: var(--jjk-text) !important;
+  border: 1px solid var(--jjk-border) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+}
+.btn-light:hover {
+  background: #F8FAFC !important;
+  border-color: var(--jjk-blue) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08) !important;
+}
 
+.btn-sm { padding: 4px 16px !important; font-size: 0.78rem !important; }
+
+/* === 卡片 === */
+.card {
+  border-radius: var(--jjk-radius) !important;
+  border: 1px solid var(--jjk-border) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03) !important;
+  transition: all 0.3s ease !important;
+}
+.card:hover {
+  border-color: var(--jjk-border-active) !important;
+  box-shadow: 0 4px 25px rgba(59, 130, 246, 0.08) !important;
+  transform: translateY(-2px);
+}
+.card-img-top { border-radius: var(--jjk-radius) var(--jjk-radius) 0 0 !important; }
+.card-body { padding: 1.25rem !important; }
+.card-title { font-weight: 600 !important; color: var(--jjk-text) !important; }
+
+/* === Tabs === */
+.nav-tabs { border-bottom: 1px solid var(--jjk-border) !important; }
+.nav-tabs .nav-link {
+  border: none !important;
+  color: var(--jjk-text-dim) !important;
+  font-weight: 500 !important;
+  padding: 10px 22px !important;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.nav-tabs .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--jjk-blue), var(--jjk-purple));
+  box-shadow: 0 0 8px var(--jjk-glow);
+  transition: transform 0.2s ease;
+}
+.nav-tabs .nav-link.active { color: var(--jjk-blue) !important; }
+.nav-tabs .nav-link.active::after { transform: translateX(-50%) scaleX(1); }
+
+/* === Badges === */
+.badge {
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  padding: 3px 10px !important;
+  font-size: 0.7rem !important;
+}
+.badge.bg-danger { background: linear-gradient(135deg, #F87171, #EF4444) !important; color: #FFFFFF !important; }
+.badge.bg-success { background: linear-gradient(135deg, #34D399, #10B981) !important; color: #FFFFFF !important; }
+.badge.bg-primary { background: linear-gradient(135deg, #3B82F6, #2563EB) !important; color: #FFFFFF !important; }
+
+/* === Inputs === */
+.form-control, .form-select {
+  border-radius: var(--jjk-radius) !important;
+  border: 1px solid var(--jjk-border) !important;
+  padding: 10px 16px !important;
+  font-family: var(--jjk-font) !important;
+  transition: all 0.2s ease !important;
+  background: #FFFFFF !important;
+  color: var(--jjk-text) !important;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--jjk-blue) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  background: #FFFFFF !important;
+}
+.form-label { font-weight: 500 !important; color: var(--jjk-text-dim) !important; font-size: 0.8rem !important; }
+
+/* === Alerts === */
+.alert { border-radius: var(--jjk-radius) !important; border: 1px solid transparent !important; }
+.alert-danger { background: #FEF2F2 !important; border-color: #FECACA !important; color: #DC2626 !important; }
+.alert-success { background: #F0FDF4 !important; border-color: #BBF7D0 !important; color: #16A34A !important; }
+
+/* === Modal === */
+.modal-content {
+  border-radius: 16px !important;
+  border: 1px solid var(--jjk-border) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08) !important;
+}
+.modal-header { border-bottom: 1px solid var(--jjk-border) !important; }
+.modal-footer { border-top: 1px solid var(--jjk-border) !important; }
+
+/* === Tables === */
+.table thead th {
+  background: #F1F5F9 !important;
+  color: var(--jjk-blue) !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-bottom: 1px solid var(--jjk-border) !important;
+  padding: 12px 16px !important;
+  font-size: 0.8rem !important;
+}
+.table tbody td { padding: 12px 16px !important; border-color: var(--jjk-border) !important; color: var(--jjk-text) !important; }
+.table tbody tr:hover { background: rgba(59, 130, 246, 0.03) !important; }
+
+/* === Links === */
+a { color: var(--jjk-blue) !important; text-decoration: none !important; transition: color 0.2s; }
+a:hover { color: var(--jjk-blue-bright) !important; }
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 { font-family: var(--jjk-font) !important; font-weight: 700 !important; color: var(--jjk-text) !important; letter-spacing: -0.01em; }
+.text-muted { color: var(--jjk-text-muted) !important; font-weight: 500 !important; }
+.text-danger { color: #DC2626 !important; font-weight: 600 !important; }
+p, li, span, div:not([class*="icon"]) { font-weight: 450; }
+
+/* ====================================================
+   🛠️ 系统管理后台 · 亮色主题适配
+   ==================================================== */
+
+.card-header {
+  background: #F8FAFC !important;
+  border-bottom: 1px solid var(--jjk-border) !important;
+  color: var(--jjk-text) !important;
+  font-weight: 600 !important;
+}
+.card-footer {
+  background: #F8FAFC !important;
+  border-top: 1px solid var(--jjk-border) !important;
+}
+
+.table {
+  --bs-table-bg: transparent !important;
+  --bs-table-color: var(--jjk-text) !important;
+  --bs-table-border-color: var(--jjk-border) !important;
+  color: var(--jjk-text) !important;
+}
+.table-light {
+  --bs-table-bg: #F1F5F9 !important;
+  --bs-table-color: var(--jjk-blue) !important;
+}
+.table-dark {
+  --bs-table-bg: #F1F5F9 !important;
+  --bs-table-color: var(--jjk-blue) !important;
+}
+.table-bordered th,
+.table-bordered td {
+  border-color: var(--jjk-border) !important;
+}
+
+.page-link {
+  background: #FFFFFF !important;
+  border-color: var(--jjk-border) !important;
+  color: var(--jjk-text-dim) !important;
+}
+.page-link:hover {
+  background: rgba(59, 130, 246, 0.06) !important;
+  border-color: var(--jjk-blue) !important;
+  color: var(--jjk-blue) !important;
+}
+.page-item.active .page-link {
+  background: linear-gradient(135deg, #3B82F6, #2563EB) !important;
+  border-color: transparent !important;
+  color: #FFFFFF !important;
+}
+.page-item.disabled .page-link {
+  background: #F1F5F9 !important;
+  border-color: var(--jjk-border) !important;
+  color: var(--jjk-text-muted) !important;
+  opacity: 0.6;
+}
+
+.list-group-item {
+  background: #FFFFFF !important;
+  border-color: var(--jjk-border) !important;
+  color: var(--jjk-text) !important;
+}
+.list-group-item.active {
+  background: linear-gradient(135deg, #3B82F6, #2563EB) !important;
+  border-color: transparent !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+.list-group-item-action:hover {
+  background: rgba(59, 130, 246, 0.04) !important;
+}
+
+.btn-outline-primary {
+  background: transparent !important;
+  color: var(--jjk-blue) !important;
+  border-color: rgba(59, 130, 246, 0.25) !important;
+}
+.btn-outline-primary:hover {
+  background: rgba(59, 130, 246, 0.06) !important;
+  border-color: var(--jjk-blue) !important;
+}
+
+.btn-outline-warning {
+  background: transparent !important;
+  color: #D97706 !important;
+  border-color: rgba(217, 119, 6, 0.25) !important;
+}
+.btn-outline-warning:hover {
+  background: rgba(217, 119, 6, 0.08) !important;
+  border-color: #D97706 !important;
+}
+
+.btn-outline-info {
+  background: transparent !important;
+  color: var(--jjk-purple) !important;
+  border-color: rgba(139, 92, 246, 0.25) !important;
+}
+.btn-outline-info:hover {
+  background: rgba(139, 92, 246, 0.08) !important;
+  border-color: var(--jjk-purple) !important;
+}
+
+.badge.bg-info { background: linear-gradient(135deg, #8B5CF6, #7C3AED) !important; color: #FFFFFF !important; }
+.badge.bg-warning { background: linear-gradient(135deg, #F59E0B, #D97706) !important; color: #FFFFFF !important; }
+.badge.bg-secondary { background: #E2E8F0 !important; color: var(--jjk-text-dim) !important; }
+
+.form-select option {
+  background: #FFFFFF !important;
+  color: var(--jjk-text) !important;
+}

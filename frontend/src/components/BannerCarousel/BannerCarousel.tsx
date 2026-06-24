@@ -1,35 +1,37 @@
+// src/components/BannerCarousel/BannerCarousel.tsx
 import styles from './BannerCarousel.module.css';
-
-const banners = [
-  { image: 'https://picsum.photos/id/10/1200/400', title: '春季新品上市', desc: '满199减50' },
-  { image: 'https://picsum.photos/id/20/1200/400', title: '数码家电狂欢', desc: '爆款直降' },
-];
+import bgVideo from '../../assets/gojo-bg.mp4';
 
 const BannerCarousel = () => {
+  const handleShopNow = () => {
+    const el = document.querySelector('[data-product-section]');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
-    <div id="mainCarousel" className={`carousel slide ${styles.carousel}`} data-bs-ride="carousel">
-      <div className="carousel-indicators">
-        {banners.map((_, index) => (
-          <button key={index} type="button" data-bs-target="#mainCarousel" data-bs-slide-to={index} className={index === 0 ? 'active' : ''} aria-label={`Slide ${index + 1}`}></button>
-        ))}
-      </div>
-      <div className="carousel-inner">
-        {banners.map((banner, index) => (
-          <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-            <img src={banner.image} className="d-block w-110" alt={banner.title} />
-            <div className={`carousel-caption d-none d-md-block ${styles.caption}`}>
-              <h3>{banner.title}</h3>
-              <p>{banner.desc}</p>
-            </div>
+    <div className={styles.hero}>
+      {/* 五条悟 视频背景 */}
+      <video className={styles.bgVideo} autoPlay muted loop playsInline>
+        <source src={bgVideo} type="video/mp4" />
+      </video>
+      <div className={styles.overlay} />
+
+      <div className={styles.heroInner}>
+        <div className={styles.heroContent}>
+          <span className={styles.badge}>✨ 新品发售</span>
+          <h2 className={styles.title}>五条悟 · 领域展开</h2>
+          <p className={styles.subtitle}>「天上天下，唯我独尊」满199减50</p>
+          <div className={styles.heroCta} onClick={handleShopNow}>
+            <span className={styles.ctaText}>✨ 立即选购</span>
+            <span className={styles.ctaArrow}>→</span>
           </div>
-        ))}
+        </div>
+        <div className={styles.heroVisual}>
+          <div className={styles.floatingIcon}>🔮</div>
+          <div className={styles.floatingIcon2}>⚡</div>
+          <div className={styles.floatingIcon3}>∞</div>
+        </div>
       </div>
-      <button className="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-        <span className="carousel-control-prev-icon"></span>
-      </button>
-      <button className="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-        <span className="carousel-control-next-icon"></span>
-      </button>
     </div>
   );
 };

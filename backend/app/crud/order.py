@@ -1,23 +1,24 @@
 # app/crud/order.py
 from decimal import Decimal
 from typing import Tuple, Optional
+from datetime import datetime, date
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, func
+from sqlalchemy import select, func, join
 from sqlalchemy.orm import selectinload
 from app.crud.base import CRUDBase
 from app.crud.product import product as product_crud
 from app.crud.cart import cart as cart_crud
 from app.models.order import Order, OrderItem, OrderStatus
+from app.models.coupon import UserCoupon, Coupon, CouponType
 from app.schemas.order import OrderCreate
-from datetime import datetime
 
 class CRUDOrder(CRUDBase[Order]):
 
-    # ========== 创建订单（保持不变）==========
+    # ========== 创建订单（支持优惠券）==========
     async def create_order_from_cart(
         self, db: AsyncSession, *, user_id: int, obj_in: OrderCreate
     ) -> Order:
-        """从购物车创建订单"""
+        """从购物车创建订单，支持优惠券抵扣"""
         cart_items = await cart_crud.get_user_cart(db, user_id=user_id)
         if not cart_items:
             raise ValueError("购物车为空，无法创建订单")
@@ -39,6 +40,43 @@ class CRUDOrder(CRUDBase[Order]):
                 "quantity": item.quantity,
                 "price": product.price
             })
+
+        # 优惠券处理
+        discount_amount = Decimal('0.0')
+        used_user_coupon = None
+        if obj_in.coupon_code:
+            # 查找用户已领取的优惠券
+            result = await db.execute(
+                select(UserCoupon)
+                .join(Coupon, UserCoupon.coupon_id == Coupon.id)
+                .where(
+                    UserCoupon.user_id == user_id,
+                    UserCoupon.is_used == False,
+                    Coupon.code == obj_in.coupon_code,
+                    Coupon.is_active == True,
+                    Coupon.start_date <= date.today(),
+                    Coupon.end_date >= date.today(),
+                    Coupon.min_amount <= float(total_amount)
+                )
+            )
+            user_coupon = result.scalar_one_or_none()
+            if not user_coupon:
+                raise ValueError("优惠券不可用或已使用")
+
+            coupon = await db.get(Coupon, user_coupon.coupon_id)
+            value = float(coupon.value)
+            if coupon.type == CouponType.FIXED:
+                discount_amount = Decimal(str(value))
+            elif coupon.type == CouponType.PERCENT:
+                discount_amount = Decimal(str(round(float(total_amount) * value / 100, 2)))
+            else:
+                raise ValueError("未知的优惠券类型")
+
+            if discount_amount > total_amount:
+                discount_amount = total_amount
+
+            total_amount -= discount_amount
+            used_user_coupon = user_coupon
 
         order_number = f"ORD{datetime.now().strftime('%Y%m%d%H%M%S')}{user_id:04d}"
 
@@ -66,6 +104,12 @@ class CRUDOrder(CRUDBase[Order]):
             await product_crud.reduce_stock(db, product_id=item.product_id, quantity=item.quantity)
 
         await cart_crud.clear_cart(db, user_id=user_id)
+
+        # 标记优惠券已使用
+        if used_user_coupon:
+            used_user_coupon.is_used = True
+            used_user_coupon.used_at = datetime.now()
+            used_user_coupon.order_id = order.id
 
         await db.commit()
         # 返回完整订单

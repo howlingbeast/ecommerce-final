@@ -36,7 +36,7 @@ async def order_trend(
         .order_by(func.date(Order.created_at))
     )
     rows = result.all()
-    dates = [row.date.strftime("%Y-%m-%d") for row in rows]
+    dates = [row.date if isinstance(row.date, str) else row.date.strftime("%Y-%m-%d") for row in rows]
     amounts = [float(row.amount) for row in rows]
     return {"dates": dates, "amounts": amounts}
 

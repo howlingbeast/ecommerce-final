@@ -25,6 +25,7 @@ export interface OrderItem {
   
   export interface OrderCreate {
     shipping_address: string;
+    coupon_code?: string;
   }
   
   export interface OrderListResponse {

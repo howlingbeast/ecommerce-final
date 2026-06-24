@@ -9,7 +9,7 @@ import type { CategoryContextType } from '../layouts/PublicLayout';
 import ProductDetailModal from '../components/ProductDetailModal/ProductDetailModal';
 import styles from './HomePage.module.css';
 
-const DEFAULT_IMAGE = 'https://via.placeholder.com/300x200?text=No+Image';
+const DEFAULT_IMAGE = 'https://via.placeholder.com/400x300?text=No+Image';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const HomePage = () => {
       try {
         setLoading(true);
         setError(null);
-        const params: any = { page: 1, size: 9, is_active: true };
+        const params: any = { page: 1, size: 12, is_active: true };
         if (activeCategory) params.category = activeCategory;
         const res = await productPublicApi.list(params);
         setProducts(res.items);
@@ -52,9 +52,9 @@ const HomePage = () => {
     setSelectedProductId(null);
   };
 
-  const handleAddToCart = async (productId: number) => {
+  const handleAddToCart = async (e: React.MouseEvent, productId: number) => {
+    e.stopPropagation();
     if (!user) {
-      // 未登录，提示并跳转到登录页
       alert('请先登录');
       navigate('/login');
       return;
@@ -69,55 +69,51 @@ const HomePage = () => {
 
   if (loading) {
     return (
-      <div className="text-center py-5">
-        <div className="spinner-border text-danger" />
+      <div className={styles.loadingContainer}>
+        <div className="spinner-border" role="status" />
+        <p className="mt-3">加载中…</p>
       </div>
     );
   }
 
   if (error) {
-    return <div className="alert alert-danger text-center">{error}</div>;
+    return <div className="alert alert-danger text-center mx-3">{error}</div>;
   }
 
   if (products.length === 0) {
-    return <div className="text-center text-muted py-5">暂无商品</div>;
+    return <div className={styles.emptyContainer}>暂无商品</div>;
   }
 
   return (
     <div className={styles.home}>
-      <h3 className="mb-4 fw-bold">🔥 热销推荐</h3>
-      <div className="row">
+      <div className={styles.sectionHeader}>
+        <h2 className={styles.sectionTitle}>热销推荐</h2>
+        <p className={styles.sectionSubtitle}>精选好物，品质之选</p>
+      </div>
+
+      <div className={styles.productGrid} data-product-section>
         {products.map((product) => (
-          <div key={product.id} className="col-md-3 mb-4">
-            <div className="card h-100 shadow-sm">
-              <img
-                src={product.image_url || DEFAULT_IMAGE}
-                className="card-img-top"
-                alt={product.name}
-                style={{ height: '200px', objectFit: 'contain', background: '#f8f9fa' }}
-              />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title fs-6">{product.name}</h5>
-                <div className="d-flex justify-content-between align-items-center mt-2">
-                  <span className="text-danger fw-bold fs-5">
-                    ¥{product.price.toFixed(2)}
-                  </span>
-                  <div className="btn-group" role="group">
-                    <button
-                      className="btn btn-outline-danger btn-sm"
-                      onClick={() => handleAddToCart(product.id)}
-                    >
-                      <i className="bi bi-cart-plus"></i> 加入
-                    </button>
-                    <button
-                      className="btn btn-outline-secondary btn-sm"
-                      onClick={() => handleShowDetail(product.id)}
-                    >
-                      详情
-                    </button>
-                  </div>
-                </div>
+          <div
+            key={product.id}
+            className={styles.productCard}
+            onClick={() => handleShowDetail(product.id)}
+          >
+            <img
+              src={product.image_url || DEFAULT_IMAGE}
+              className={styles.productImage}
+              alt={product.name}
+            />
+            <div className={styles.productInfo}>
+              <div className={styles.productName}>{product.name}</div>
+              <div className={styles.productPrice}>
+                ¥{product.price.toFixed(2)}
               </div>
+              <button
+                className={styles.addToCartBtn}
+                onClick={(e) => handleAddToCart(e, product.id)}
+              >
+                加入购物车 →
+              </button>
             </div>
           </div>
         ))}

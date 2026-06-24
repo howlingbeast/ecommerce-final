@@ -1,11 +1,27 @@
 .footer {
-    background-color: #2f3542;
-    color: #dfe4ea;
+    background: var(--jjk-surface);
+    color: var(--jjk-text-dim);
     margin-top: 3rem;
-  }
-  .footer a {
-    color: #dfe4ea;
-  }
-  .footer a:hover {
-    color: #ff4757;
-  }
+    border-top: 1px solid var(--jjk-border);
+}
+.footer h5 {
+    color: var(--jjk-text);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+.footer p,
+.footer li,
+.footer small {
+    color: var(--jjk-text-dim);
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+.footer a {
+    color: var(--jjk-blue);
+    font-weight: 500;
+}
+.footer a:hover {
+    color: var(--jjk-blue-bright);
+    text-decoration: underline;
+}

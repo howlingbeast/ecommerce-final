@@ -11,6 +11,8 @@ import Users from '../pages/admin/Users';
 import Carts from '../pages/admin/Carts';
 import CheckoutPage from '../pages/CheckoutPage';
 import OrdersPage from '../pages/OrdersPage';
+import AccountPage from '../pages/AccountPage';
+import CouponsPage from '../pages/CouponsPage';
 import Orders from '../pages/admin/Orders';
 import PayPage from '../pages/PayPage';
 import PaymentReturn from '../pages/PaymentReturn';
@@ -85,6 +87,8 @@ export const AppRouter = () => {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/orders" element={<OrdersPage />} /> 
             <Route path="/pay" element={<PayPage />} />
+            <Route path="/account" element={<AccountPage />} />
+            <Route path="/coupons" element={<CouponsPage />} />
             {/* 其他用户页面放这里 */}
           </Route>
         </Route>

@@ -26,6 +26,7 @@ class Order(Base):
     # 关联关系
     user: Mapped["User"] = relationship("User", back_populates="orders")
     items: Mapped[list["OrderItem"]] = relationship("OrderItem", back_populates="order", cascade="all, delete-orphan")
+    logistics: Mapped["LogisticsTracking"] = relationship("LogisticsTracking", back_populates="order", uselist=False, cascade="all, delete-orphan")
 
 
 class OrderItem(Base):

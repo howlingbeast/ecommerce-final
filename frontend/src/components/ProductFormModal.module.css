@@ -8,7 +8,7 @@
   
   .modalHeader {
     background: linear-gradient(135deg, #ff4757, #e84118);
-    color: white;
+    color: var(--jjk-text);
     border-bottom: none;
     border-radius: 12px 12px 0 0;
     padding: 1rem 1.5rem;
@@ -20,7 +20,7 @@
   }
   
   .closeBtn {
-    color: white;
+    color: var(--jjk-text);
     opacity: 0.8;
     transition: opacity 0.2s;
   }
@@ -31,7 +31,7 @@
   
   .modalBody {
     padding: 2rem 1.8rem;
-    background-color: #fff;
+    background: var(--jjk-card);
   }
   
   .formGroup {
@@ -40,7 +40,7 @@
   
   .formLabel {
     font-weight: 500;
-    color: #2f3542;
+    color: var(--jjk-text);
     margin-bottom: 0.5rem;
     display: block;
   }
@@ -53,7 +53,7 @@
   
   .inputControl {
     border-radius: 8px;
-    border: 1px solid #e1e8ed;
+    border: 1px solid var(--jjk-border);
     padding: 0.6rem 1rem;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
@@ -76,9 +76,9 @@
   }
   
   .cancelBtn {
-    background-color: #f1f2f6;
-    border-color: #e1e8ed;
-    color: #2f3542;
+    background: var(--jjk-surface);
+    border-color: var(--jjk-border);
+    color: var(--jjk-text);
     border-radius: 8px;
     padding: 0.5rem 1.2rem;
   }
@@ -93,7 +93,7 @@
     border: none;
     border-radius: 8px;
     padding: 0.5rem 1.5rem;
-    color: white;
+    color: var(--jjk-text);
     font-weight: 500;
     transition: transform 0.1s, box-shadow 0.2s;
   }

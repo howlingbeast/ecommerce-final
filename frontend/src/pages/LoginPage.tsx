@@ -58,7 +58,7 @@ const LoginPage = () => {
   return (
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
-        <h2 className="text-center mb-4 fw-bold">用户登录</h2>
+        <h2 className={styles.authTitle}>登录</h2>
         {location.state?.message && (
           <div className="alert alert-success">{location.state.message}</div>
         )}

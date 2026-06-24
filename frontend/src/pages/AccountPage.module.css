@@ -1,0 +1,15 @@
+.userCard {
+  background: var(--jjk-card);
+  border-radius: var(--jjk-radius);
+  border: 1px solid var(--jjk-border);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tabContent { min-height: 400px; }

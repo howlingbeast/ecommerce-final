@@ -1,13 +1,23 @@
 .header {
-    background-color: #2f3542;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  .logo {
-    color: white;
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-  }
-  .logo:hover {
-    color: #ff4757;
-  }
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-bottom: 1px solid var(--jjk-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  color: var(--jjk-text) !important;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  gap: 6px;
+  letter-spacing: -0.5px;
+  transition: all 0.2s;
+}
+.logo:hover { opacity: 0.85; color: var(--jjk-blue) !important; }
+
+.logoIcon { font-size: 1.3rem; line-height: 1; }

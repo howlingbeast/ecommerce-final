@@ -49,6 +49,18 @@ const PublicNavbar = ({ setActiveCategory }: PublicNavbarProps) => {
               </li>
             ))}
           </ul>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink to="/account" className={({ isActive }) => `nav-link ${isActive ? styles.active : ''}`}>
+                <i className="bi bi-heart me-1"></i>我的收藏
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/coupons" className={({ isActive }) => `nav-link ${isActive ? styles.active : ''}`}>
+                <i className="bi bi-ticket me-1"></i>优惠券
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

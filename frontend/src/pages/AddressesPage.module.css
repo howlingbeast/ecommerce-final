@@ -1,0 +1,83 @@
+.wrapper {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.addressCard {
+  background: var(--jjk-card);
+  border-radius: var(--jjk-radius);
+  border: 1px solid var(--jjk-border);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+}
+.addressCard:hover {
+  border-color: var(--jjk-border-active);
+  box-shadow: 0 4px 25px rgba(107, 212, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.name { font-weight: 700; font-size: 1rem; color: var(--jjk-text); }
+.phone { color: var(--jjk-text-dim); font-size: 0.9rem; }
+
+.defaultBadge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #6BD4FF, #4CA8E8);
+  color: #0A0E1A;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.fullAddress {
+  margin-top: 0.5rem;
+  color: var(--jjk-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.addressActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.emptyContainer {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--jjk-card);
+  border-radius: var(--jjk-radius);
+  border: 1px solid var(--jjk-border);
+}

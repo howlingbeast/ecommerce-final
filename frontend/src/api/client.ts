@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: '/api/v1',   // 代理转发目标
+  baseURL: '/api/v1',   // 同源请求，后端托管前端
   headers: {
     'Content-Type': 'application/json',
   },

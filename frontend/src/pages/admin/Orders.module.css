@@ -1,6 +1,6 @@
 /* src/pages/admin/Orders.module.css */
 .container {
-    background-color: #fff;
+    background: var(--jjk-card);
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -19,7 +19,7 @@
     z-index: 1050;
   }
   .modalContent {
-    background: white;
+    background: var(--jjk-card);
     border-radius: 16px;
     width: 90%;
     max-width: 800px;
@@ -32,8 +32,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid #e1e8ed;
-    background: #fafbfc;
+    border-bottom: 1px solid var(--jjk-border);
+    background: var(--jjk-surface);
     border-radius: 16px 16px 0 0;
   }
   .closeBtn {
@@ -41,25 +41,30 @@
     border: none;
     font-size: 1.8rem;
     cursor: pointer;
-    color: #6c757d;
+    color: var(--jjk-text-dim);
   }
   .closeBtn:hover {
-    color: #ff4757;
+    color: var(--jjk-primary);
   }
   .modalBody {
     padding: 1.5rem;
   }
   .modalFooter {
     padding: 1rem 1.5rem;
-    border-top: 1px solid #e1e8ed;
+    border-top: 1px solid var(--jjk-border);
     text-align: right;
-    background: #fafbfc;
+    background: var(--jjk-surface);
     border-radius: 0 0 16px 16px;
   }
   .closeFooterBtn {
-    background: #f1f2f6;
-    border: 1px solid #ddd;
+    background: var(--jjk-surface);
+    border: 1px solid var(--jjk-border);
     padding: 0.4rem 1rem;
     border-radius: 8px;
     cursor: pointer;
+    color: var(--jjk-text-dim);
+  }
+  .closeFooterBtn:hover {
+    border-color: var(--jjk-blue);
+    color: var(--jjk-blue);
   }

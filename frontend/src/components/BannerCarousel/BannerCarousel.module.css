@@ -1,10 +1,136 @@
-.carousel {
-    margin-bottom: 2rem;
-    border-radius: 0 0 10px 10px;
-    overflow: hidden;
-  }
-  .caption {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 10px;
-    padding: 1rem;
-  }
+/* BannerCarousel.module.css — 五条悟视频背景 Hero */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: #0D1225;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.75) 0%,
+    rgba(15, 23, 42, 0.4) 40%,
+    rgba(15, 23, 42, 0.15) 70%,
+    rgba(15, 23, 42, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  padding: 3rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.heroContent { flex: 1; }
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #6BD4FF, #A78BFA);
+  color: #0A0E1A;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #F1F5F9;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-shadow: 0 0 30px rgba(107, 212, 255, 0.15);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #94A3B8;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6BD4FF;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.heroCta:hover { gap: 12px; color: #9BE1FF; text-shadow: 0 0 20px rgba(107, 212, 255, 0.3); }
+.ctaArrow { transition: transform 0.3s ease; }
+.heroCta:hover .ctaArrow { transform: translateX(4px); }
+
+.heroVisual { position: relative; width: 160px; height: 160px; flex-shrink: 0; }
+
+.floatingIcon {
+  position: absolute; font-size: 3rem;
+  top: 20px; left: 10px;
+  animation: float1 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(107, 212, 255, 0.4));
+}
+.floatingIcon2 {
+  position: absolute; font-size: 2rem;
+  top: 5px; right: 10px;
+  animation: float2 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(167, 139, 250, 0.4));
+}
+.floatingIcon3 {
+  position: absolute; font-size: 2.8rem;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  animation: float3 4.5s ease-in-out infinite;
+  color: #6BD4FF;
+  opacity: 0.6;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(5deg); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-5deg); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: 280px; }
+  .heroInner { padding: 2rem 1.5rem; }
+  .title { font-size: 1.6rem; }
+  .heroVisual { width: 80px; height: 80px; }
+  .floatingIcon { font-size: 2rem; }
+  .floatingIcon2 { font-size: 1.5rem; }
+  .floatingIcon3 { font-size: 2rem; }
+}
