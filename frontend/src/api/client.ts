@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+# 前端 API 基础地址 — 部署时改为 Render 后端地址
+# GitHub Pages: http://localhost:5173/api/v1 (本地开发)
+# Render: https://ecommerce-final.onrender.com/api/v1 (线上)
+const API_BASE = import.meta.env.DEV ? '/api/v1' : 'https://ecommerce-final.onrender.com/api/v1'
+
 const apiClient = axios.create({
-  baseURL: '/api/v1',   // 同源请求，后端托管前端
+  baseURL: API_BASE,
   headers: {
     'Content-Type': 'application/json',
   },

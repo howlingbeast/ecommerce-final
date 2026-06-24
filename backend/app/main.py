@@ -41,7 +41,10 @@ app = FastAPI(
 # CORS（保留，以防未来需要）
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "*",
+        "https://howlingbeast.github.io",
+    ],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
