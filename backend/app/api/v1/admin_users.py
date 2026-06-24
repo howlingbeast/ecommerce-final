@@ -1,6 +1,7 @@
 # app/api/v1/admin_users.py
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -101,6 +102,7 @@ async def delete_user(
     if user.id == current_user.id:
         raise HTTPException(status_code=400, detail="Cannot delete yourself")
     await user_crud.remove(db, id=user_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.patch("/{user_id}/toggle-status", response_model=UserOut)

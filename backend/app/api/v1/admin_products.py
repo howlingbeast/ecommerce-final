@@ -1,6 +1,7 @@
 # app/api/v1/admin_products.py
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -151,7 +152,7 @@ async def delete_product(
         )
     
     await product_crud.remove(db, id=product_id)
-    return None
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.patch("/{product_id}/toggle-status", response_model=ProductOut)

@@ -1,5 +1,6 @@
 # app/api/v1/admin_coupons.py
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -86,4 +87,4 @@ async def delete_coupon(
         )
 
     await coupon_crud.remove(db, id=coupon_id)
-    return None
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

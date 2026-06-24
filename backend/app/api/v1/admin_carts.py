@@ -1,5 +1,6 @@
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, or_
 from sqlalchemy.orm import selectinload
@@ -106,6 +107,7 @@ async def delete_cart_item_admin(
         raise HTTPException(status_code=404, detail="Cart item not found")
     await db.delete(item)
     await db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.delete("/user/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -119,3 +121,4 @@ async def clear_user_cart_admin(
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     await cart_crud.clear_cart(db, user_id=user_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

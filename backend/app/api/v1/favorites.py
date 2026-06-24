@@ -1,5 +1,6 @@
 # app/api/v1/favorites.py
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 import traceback
 
@@ -91,7 +92,7 @@ async def remove_favorite(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Favorite not found"
         )
-    return None
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.get("/check/{product_id}", response_model=dict)

@@ -1,5 +1,6 @@
 # app/api/v1/reviews.py
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -121,4 +122,4 @@ async def delete_review(
         )
 
     await review_crud.remove(db, id=review_id)
-    return None
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

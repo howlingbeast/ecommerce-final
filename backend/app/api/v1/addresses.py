@@ -1,5 +1,6 @@
 # app/api/v1/addresses.py
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -86,7 +87,7 @@ async def delete_address(
         )
 
     await address_crud.remove(db, id=address_id)
-    return None
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.put("/{address_id}/default", response_model=AddressResponse)
