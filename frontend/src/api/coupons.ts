@@ -2,16 +2,6 @@
 import apiClient from './client';
 import type { UserCoupon, ApplyCouponRequest, ApplyCouponResult, Coupon } from '../types/coupon';
 
-interface CouponListResponse {
-  items: Coupon[];
-  total: number;
-}
-
-interface UserCouponListResponse {
-  items: UserCoupon[];
-  total: number;
-}
-
 export const couponsApi = {
   getAvailable: (params?: { skip?: number; limit?: number }) =>
     apiClient.get<Coupon[]>('/coupons/available', { params }).then(r => r.data),

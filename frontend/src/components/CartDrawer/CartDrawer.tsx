@@ -10,7 +10,7 @@ interface CartDrawerProps {
 }
 
 const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
-  const { items, totalQuantity, isLoading, fetchCart, updateItemQuantity, removeItem, clearCart } = useCartStore();
+  const { items, totalQuantity: _totalQuantity, isLoading, fetchCart, updateItemQuantity, removeItem, clearCart } = useCartStore();
   const navigate = useNavigate();
 
   useEffect(() => {

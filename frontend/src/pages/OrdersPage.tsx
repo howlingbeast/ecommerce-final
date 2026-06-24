@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useOrderStore } from "../store/orderStore";
 import { useNavigate } from "react-router-dom";
 import { paymentApi } from '../api/payment';
-import { logisticsApi } from '../api/logistics';
 import LogisticsModal from '../components/LogisticsModal';
 import type { Order } from '../types/order';          // 导入 Order 类型
 import styles from "./OrdersPage.module.css";
@@ -13,7 +12,7 @@ const DEFAULT_IMAGE = "https://via.placeholder.com/60?text=No+Image";
 
 const OrdersPage = () => {
   const navigate = useNavigate();
-  const { orders, total, isLoading, fetchOrders, cancelOrder } = useOrderStore();
+  const { orders, total: _total, isLoading, fetchOrders, cancelOrder } = useOrderStore();
   const [expandedOrderId, setExpandedOrderId] = useState<number | null>(null);
   const [logisticsOrderId, setLogisticsOrderId] = useState<number | null>(null);
   const [showLogistics, setShowLogistics] = useState(false);

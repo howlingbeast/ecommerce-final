@@ -84,7 +84,10 @@ class CRUDUser(CRUDBase[User]):
         if is_superuser is not None:
             query = query.where(User.is_superuser == is_superuser)
 
-        # 排序
+        # 排序（白名单验证）
+        ALLOWED_USER_SORT_FIELDS = {"id", "username", "email", "full_name", "is_active", "is_superuser", "created_at"}
+        if sort_by not in ALLOWED_USER_SORT_FIELDS:
+            sort_by = "created_at"
         sort_field = getattr(User, sort_by, User.created_at)
         if sort_order == "asc":
             query = query.order_by(sort_field.asc())

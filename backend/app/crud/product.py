@@ -74,8 +74,11 @@ class CRUDProduct(CRUDBase[Product]):
             if search_params.is_active is not None:
                 query = query.where(Product.is_active == search_params.is_active)
             
-            # 排序
+            # 排序（白名单验证，防止注入）
+            ALLOWED_SORT_FIELDS = {"name", "price", "stock", "created_at", "updated_at", "category", "is_active"}
             if search_params.sort_by:
+                if search_params.sort_by not in ALLOWED_SORT_FIELDS:
+                    search_params.sort_by = "created_at"  # 回退到默认值
                 sort_field = getattr(Product, search_params.sort_by, None)
                 if sort_field:
                     if search_params.sort_order == "asc":
@@ -136,15 +139,15 @@ class CRUDProduct(CRUDBase[Product]):
         return list(result.scalars().all())
 
     async def check_stock(
-        self, 
-        db: AsyncSession, 
-        *, 
-        product_id: int, 
+        self,
+        db: AsyncSession,
+        *,
+        product_id: int,
         quantity: int
     ) -> Tuple[bool, Optional[Product]]:
         """
         检查商品库存是否足够
-        
+
         返回：(是否足够, 商品对象)
         """
         product = await self.get(db, id=product_id)

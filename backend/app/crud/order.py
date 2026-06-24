@@ -32,13 +32,14 @@ class CRUDOrder(CRUDBase[Order]):
             if product.stock < item.quantity:
                 raise ValueError(f"商品 {product.name} 库存不足，当前库存: {product.stock}")
 
-            item_total = product.price * item.quantity
+            item_price = Decimal(str(product.price))
+            item_total = item_price * item.quantity
             total_amount += item_total
             order_items_data.append({
                 "product_id": product.id,
                 "product_name": product.name,
                 "quantity": item.quantity,
-                "price": product.price
+                "price": float(item_price),  # 存储快照时转为 float（数据库 DECIMAL 列）
             })
 
         # 优惠券处理

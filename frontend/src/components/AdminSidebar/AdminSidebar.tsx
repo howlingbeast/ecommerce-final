@@ -12,7 +12,7 @@ const menuItems = [
 ];
 
 const AdminSidebar = () => {
-  const { user } = useAuthStore();
+  const { user: _user } = useAuthStore();
   const location = useLocation();
 
   return (
